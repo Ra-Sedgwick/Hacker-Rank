@@ -11,8 +11,15 @@ def array_left_rotation(array, numbers, rotations):
     return array
 
 
+def rotate_slice(array, rotation):
+    if rotation > len(array):
+        rotation -= len(array)
+
+    return array[rotation:] + array[:rotation]
+
+
 # Get input
 numbers, rotations = map(int, input().strip().split(' '))
 array = list(map(int, input().strip().split(' ')))
-result = array_left_rotation(array, numbers, rotations);
+result = rotate_slice(array, rotations)
 print(*result, sep=' ')
